@@ -1,23 +1,21 @@
 import { editorState } from '@/store/editor';
 import { mdxToAst } from '@/utils/ast';
-import { useEffect, useState } from 'react';
+import {  useMemo } from 'react';
 import {
   useRecoilValue,
 } from 'recoil';
+import JsonView from 'react18-json-view'
+import 'react18-json-view/src/style.css'
 
 const Preview = () => {
   const value = useRecoilValue(editorState)
-  const [json, setJson] = useState<any>()
 
-  useEffect(() => {
-    (async () => {
-      const ast = mdxToAst(value || "")
-      console.log({ ast })
-      setJson(ast)
-    })();
+  const ast = useMemo(()=>{
+    return mdxToAst(value || "")
   }, [value])
-  return <div>{value}</div>
+  return <div>
+    <JsonView src={ast} enableClipboard={false}/>
+  </div>
 }
 
-export default Preview
 export default Preview
