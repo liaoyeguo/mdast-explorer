@@ -2,6 +2,7 @@
 import { Panel, PanelGroup, PanelResizeHandle } from "react-resizable-panels";
 import styles from "./index.module.css";
 import Editor from "../Editor";
+import Preview from "../Preview"
 
 const Main = () => {
   return (
@@ -11,7 +12,7 @@ const Main = () => {
       </Panel>
       <PanelResizeHandle className={styles.handler} id="handler" />
       <Panel>
-        <div>12333333</div>
+        <Preview />
       </Panel>
     </PanelGroup>
   );
