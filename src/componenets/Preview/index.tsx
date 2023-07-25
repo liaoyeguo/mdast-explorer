@@ -16,8 +16,8 @@ const Preview = () => {
       setJson(ast)
     })();
   }, [value])
-
   return <div>{value}</div>
 }
 
+export default Preview
 export default Preview
