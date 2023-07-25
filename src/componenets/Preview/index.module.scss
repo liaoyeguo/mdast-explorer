@@ -1,0 +1,22 @@
+.wrapper {
+  background: #f3f4f6;
+  padding: 16px;
+  height: 100%;
+
+  .inner {
+    background-color: #fff;
+    border-radius: 4px;
+    height: 100%;
+    overflow-y: auto;
+    padding: 8px;
+  }
+
+  :global {
+    .json-view {
+      line-height: 20px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+        Liberation Mono, Courier New, monospace;
+      font-size: 14px;
+    }
+  }
+}
