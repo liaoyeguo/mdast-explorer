@@ -1,22 +1,24 @@
 "use client";
 import { editorState } from "@/store/editor";
-import { default as MonacoEditor, useMonaco } from "@monaco-editor/react";
-import { useEffect } from "react";
+import { default as MonacoEditor, loader } from "@monaco-editor/react";
+import { useEffect, useLayoutEffect } from "react";
 import { useRecoilState } from "recoil";
 import styles from "./index.module.scss";
+import * as monaco from "monaco-editor/esm/vs/editor/editor.api";
+
+export const useIsomorphicLayoutEffect =
+  typeof window !== "undefined" ? useLayoutEffect : useEffect;
 
 const Editor = () => {
-  const monaco = useMonaco();
-
   const [text, setText] = useRecoilState(editorState);
 
   const onChange = (val?: string) => {
     setText(val);
   };
 
-  useEffect(() => {
-    // monaco?.languages.typescript.javascriptDefaults.setEagerModelSync(true);
-  }, [monaco]);
+  useIsomorphicLayoutEffect(() => {
+    loader.config({ monaco });
+  }, []);
 
   return (
     <div className={styles.wrapper}>

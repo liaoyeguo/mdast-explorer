@@ -1,6 +1,8 @@
-import remarkParse from "remark-parse"
-import { unified } from "unified"
+import remarkParse from "remark-parse";
+import remarkMdx from "remark-mdx";
 
-export const mdxToAst =  (content:string) => {
-    return unified().use(remarkParse).parse(content)
-}
+import { unified } from "unified";
+
+export const mdxToAst = (content: string) => {
+  return unified().use(remarkMdx).use(remarkParse).parse(content);
+};
