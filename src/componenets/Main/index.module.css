@@ -1,4 +1,9 @@
-.handler{
+.handlerHorizontal{
     width: 4px;
+    background: #e5e7eb;
+}
+
+.handlerVertical{
+    height: 4px;
     background: #e5e7eb;
 }
